@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang='portugues'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle reagentes LBEP - Instituto Carlos Chagas</title>  
+    <link rel = 'stylesheet' href = 'main.css' type='text/css'>
+    <link rel = 'script' href ='main.js'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+</head>        
+
+<body>
+    <main class='container'>
+        <h1>Controle de reagentes LBEP - Cristalização</h1>
+        <form class="ls-form row" action="https://sheetdb.io/api/v1/ududor9q3gpng" method="post" id="sheetdb-form">      
+            <div class="input-all">
+            <div class="input">
+            <label class="ls-label col-md">
+                <b class="ls-label-text">Usuário</b>
+                <div class='ls-custom-select'>
+                <select class='ls-select' name="data[Usuário]" autocomplete="off">
+                    <option selected="selected">Usuário</option>
+                    <option value='Ana Paula'>Ana Paula</option>
+                    <option value='Beatriz G.'>Beatriz G.</option>
+                    <option value='Beatriz M.'>Beatriz M.</option>
+                    <option value='Giovanna'>Giovanna</option>
+                    <option value='Gisele'>Gisele</option>
+                    <option value='Natalia'>Natalia</option>
+                    <option value='Nilson'>Nilson</option>
+                    <option value='Renato'>Renato</option>
+                    <option value='Tatiana'>Tatiana</option>
+                    <option value='Verônica'>Verônica</option>
+                </select>
+                </div>
+            </label>
+            </div>
+
+            <div class="input">
+            <label class="'ls-label col-md">
+                <b class="ls-label-text">Data de uso</b>
+                <div class='ls-custom-select'>
+                    <input type="date" id="Test_DatetimeLocal" name='data[Data]' autocomplete="off">
+                </div>
+            </label>
+            </div>
+
+            <div class="input">
+            <label class="'ls-label col-md">
+                <b class="ls-label-text">Reagente</b>
+                <div class='ls-custom-select'>
+                <select class="'ls-select" name="data[Reagente]" autocomplete="off">
+                    <option selected="selected">Reagente</option>
+                    <option value='Ácido cítrico'>Ácido cítrico 5mM</option>
+                    <option value='Ácido clorídrico'>Ácido clorídico 5mM</option>
+                </select>
+                </div>
+            </label>
+            </div>
+
+            <div class="input">
+            <label class="input-field">
+                <b class="ls-label-text">Quantidade (em mg)</b>
+                <div class='ls-custom-select'>
+                    <input type="text" id="quantidade" placeholder='Quantidade' name='data[Quantidade]' autocomplete="off">
+                </div>
+            </label>
+            </div>
+            </div>
+
+            <!-------Button--------->
+            <div class="input">
+            <div class="button-submit">
+            <input class="btn-submit" id='send' type='submit' value="Enviar">
+            </div>
+            </div>
+
+        </form>
+    </main>
+
+    <script>
+        var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          fetch(form.action, {
+              method : "POST",
+              body: new FormData(document.getElementById("sheetdb-form")),
+          }).then(
+              response => response.json()
+          ).then((html) => {
+            // you can put any JS code here
+            window.open('/pages/form-post.html', '_blank');
+
+          });
+        });
+    </script>
+
+
+</body>
+</html>
+
